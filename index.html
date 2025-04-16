@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remo-Solar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+
+    <!-- <div class="background">
+        <div class="div">
+            <div class="ul">
+                <a href="#" class="home" onclick="scrollToSection('gallery-section')">Gallery</a>
+                <a href="./new2.html" class="support">Products</a>
+                <a href="#" class="about" onclick="scrollToSection('about-grid')">About</a>
+                <a href="#" class="register" onclick="scrollToSection('services-section')">Services</a>
+                </div>
+        </div> -->        
+        <header class="navbar">
+          <div class="logo">Remo Solar</div>
+          <nav class="nav-links" id="navLinks">
+            <a href="#" onclick="scrollToSection('gallery-section')">Gallery</a>
+            <a href="new2.html">Products</a>
+            <a href="#" onclick="scrollToSection('about-grid')">About</a>
+            <a href="#" onclick="scrollToSection('services-section')">Services</a>
+          </nav>
+          <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </header>
+
+
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline class="background-video">
+            <source src="./image/8853485-hd_1920_1080_24fps (1).mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="video-overlay"></div>
+        
+          <!-- Your content on top of the video -->
+          <div class="content">
+            <h1>Remo Solar</h1>
+            <h3>
+              In partnership with A+Crystal Energy Engineering limited.
+            </h3>
+            <p>We bring clean Energy
+              for a Brighter Future</p>
+              <p>
+                “Affordable, reliable, and clean solar energy solutions for your home or business.”
+
+              </p>
+          </div>
+        
+        <!-- <div class="video-background">
+          <video autoplay muted loop playsinline>
+            <source src="./image/8853485-hd_1920_1080_24fps (1).mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-overlay"></div>
+        </div> -->
+        
+      
+        <!-- Placeholder sections for demo -->    
+
+        
+    <!-- <h1 class="power">Power your future with</h1>
+    <h2 class="solar">REMO SOLAR</h2>
+    
+    <div class="button-group">
+      <a href="#" class="now">SHOP-NOW</a>
+      <a href="#learn" class="now-1">LEARN-MORE</a>
+    </div> -->
+
+
+
+        <!-- <div class="text">
+            <h1 class="power">
+                Power your future with 
+                <br>
+            <span class="solar">
+                REMO SOLAR 
+            </span>
+            </h1>
+            <h1 class="text-1">
+                <span class="co-operate">
+                    <span style="color: white;
+                    font-size: 18px;">In</span> partnership with 
+                </span>
+                A+Crystal Energy Engineering limited.
+
+                <span>
+                    <h3 class="clean">
+                        “Affordable, reliable, and clean solar energy <span class="solution">solutions for your home or business.”</span>
+                    </h3>
+                </span>
+            </h1>
+        </div>
+
+
+    </div> -->
+
+  <div class="enoch">
+    <button class="now" onclick="scrollToSection('products')">
+        Shop now
+    </button>
+    <!-- <button class="now-1" onclick="scrollToSection('products')">
+        Learn more
+    </button> -->
+  </div>
+    </div>
+    <!-- <div class="box">
+        <div class="box-1">
+            
+        </div>
+        <div class="box-2">
+
+        </div>
+        <div class="box-3">
+
+        </div>
+    </div> -->
+
+    <div id="chat-widget">
+        <div id="chat-header" onclick="toggleChat()">💬 Need Help?</div>
+        <div id="chat-body">
+          <div id="chat-messages"></div>
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Type your message..."
+            onkeydown="handleInput(event)"
+          />
+        </div>
+      </div>
+
+      <!-- Sticky Back to Top Button -->
+<button id="backToTop" onclick="scrollToTop()">⬆ Top</button>
+
+<a href="https://wa.me/2349021475250?text=Hi%20REMO%20SOLAR!" class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/whatsapp--v1.png" width="40" />
+  </a>
+
+
+  <!-- <section class="gallery-section" id="gallery-section">
+    <h2>Check Out Our Gallery</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="./image/IMG-20250408-WA0017.jpg" alt="Solar Inverter Installation">
+      </div>
+      <div class="gallery-item">
+        <img src="image/IMG-20250408-WA0018.jpg" alt="Rooftop Solar Panels">
+      </div>
+      <div class="gallery-item">
+        <img src="image/IMG-20250408-WA0019.jpg" alt="Panel Installation">
+      </div>
+    </div>
+  </section> -->
+<br>
+<br>
+<br>
+<br>
+  <section class="testimonials-section">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"They installed our solar system fast and professionally. We're already seeing major savings on our energy bill!"</p>
+        <div class="testimonial-client">
+          <img src="images/client1.jpg" alt="Client Photo">
+          <div>
+            <h4>Jane Doe</h4>
+            <span>Homeowner</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Reliable and friendly team. They took care of everything from planning to connection. Highly recommend!"</p>
+        <div class="testimonial-client">
+          <img src="images/client2.jpg" alt="Client Photo">
+          <div>
+            <h4>Michael O.</h4>
+            <span>Business Owner</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Very helpful during consultation. They helped me choose the right system for my budget and location."</p>
+        <div class="testimonial-client">
+          <img src="images/client3.jpg" alt="Client Photo">
+          <div>
+            <h4>Fatima A.</h4>
+            <span>Architect</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <section class="bonus-section">
+    <h2>Why Choose Us?</h2>
+    <div class="bonus-cards">
+      <div class="bonus-card">
+        <div class="bonus-icon">🔒</div>
+        <h3>25-Year Warranty</h3>
+        <p>All our solar systems come with a full 25-year performance warranty for peace of mind.</p>
+      </div>
+  
+      <div class="bonus-card">
+        <div class="bonus-icon">🌿</div>
+        <h3>Eco-Friendly Solutions</h3>
+        <p>Our installations reduce your carbon footprint while saving you money.</p>
+      </div>
+  
+      <div class="bonus-card">
+        <div class="bonus-icon">⚡</div>
+        <h3>High Efficiency Panels</h3>
+        <p>We use only top-tier panels with industry-leading efficiency ratings.</p>
+      </div>
+  
+      <div class="bonus-card">
+        <div class="bonus-icon">💬</div>
+        <h3>Expert Support</h3>
+        <p>Our friendly team is here to help before, during, and after your installation.</p>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  
+  <!-- Services Section -->
+<section class="services-section" id="services-section">
+  <h2>Our Services</h2>
+  <div class="services">
+    <div class="service-card">
+      <div class="icon-box">
+        <!-- Checkmark Icon for Installation -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l2-2l4 4l8-8l2 2l-10 10l-6-6z" />
+        </svg>
+      </div>
+      <h3>Solar Installation</h3>
+      <p>Professional setup of solar panels and inverters for homes and businesses.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon-box">
+        <!-- Wrench Icon for Maintenance -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 7l-5 5l-4-4l5-5z" />
+          <path d="M2 20l4-4l4 4l-4 4z" />
+        </svg>
+      </div>
+      <h3>Maintenance & Repairs</h3>
+      <p>Regular maintenance and fast repairs to keep your system running smoothly.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="icon-box">
+        <!-- Lightbulb Icon for Consultation -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="lucide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18h6" />
+          <path d="M10 22h4" />
+          <path d="M2 10a10 10 0 0 1 20 0c0 4-2 5-3 6a3 3 0 0 0-1 2v1H6v-1a3 3 0 0 0-1-2c-1-1-3-2-3-6z" />
+        </svg>
+      </div>
+      <h3>Consultation & Design</h3>
+      <p>Expert advice and custom system design tailored to your energy needs.</p>
+    </div>
+  </div>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <section class="gallery-section" id="gallery-section">
+    <h2>📸 Check Out Our Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="./image/WhatsApp Image 2025-04-16 at 14.32.09_36bbd97d.jpg" alt="Installation 1">
+        <p>Inverter & Battery Room</p>
+      </div>
+      <div class="gallery-card">
+        <img src="./image/WhatsApp Image 2025-04-16 at 14.32.10_e241acb4.jpg" alt="Installation 2">
+        <p>Panel Prep Stage</p>
+      </div>
+      <div class="gallery-card">
+        <img src="./image/WhatsApp Image 2025-04-16 at 14.32.11_597baa81.jpg" alt="Installation 3">
+        <p>Full Rooftop Installation</p>
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <!-- <div class="vision-1">
+    <div>
+        <video src="./image/VID-20250408-WA0016.mp4" controls class="v-1"></video>
+    </div>
+    <div>
+        <video src="./image/VID-20250408-WA0017.mp4" controls  class="v-2"></video>
+    </div>
+  </div> -->
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <section class="video-showcase">
+    <h2>Project Highlights</h2>
+    <div class="video-grid">
+      <div class="video-card">
+        <video src="./image/VID-20250408-WA0015.mp4" controls></video>
+        <h3>30KW Genset Controller</h3>
+        <p>Live reading from the smart controller setup during installation.</p>
+      </div>
+      <div class="video-card">
+        <video src="./image/VID-20250408-WA0015.mp4" controls></video>
+        <h3>Battery Inverter System</h3>
+        <p>Real-time usage of the backup power system in residential space.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Embedded CSS -->
+
+   <br> 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <section class="about-grid-section" id="about-grid">
+    <h2>About Us</h2>
+    <p class="about-intro">We're not just solar installers — we're a movement for clean energy. Here's what we stand for:</p>
+    <div class="about-grid">
+      <div class="about-item">
+        <div class="about-icon">🌞</div>
+        <h3>Passion for Solar</h3>
+        <p>Driven by a mission to bring solar power to every home and business across the country.</p>
+      </div>
+  
+      <div class="about-item">
+        <div class="about-icon">🤝</div>
+        <h3>Customer First</h3>
+        <p>We listen, we care, and we tailor every project to your needs and budget.</p>
+      </div>
+  
+      <div class="about-item">
+        <div class="about-icon">🧠</div>
+        <h3>Expertise & Innovation</h3>
+        <p>Backed by certified engineers and the latest solar technology for reliable results.</p>
+      </div>
+  
+      <div class="about-item">
+        <div class="about-icon">🌍</div>
+        <h3>Green Impact</h3>
+        <p>Every installation moves us closer to a cleaner, more sustainable planet.</p>
+      </div>
+    </div>
+  </section>
+  
+  
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Go Solar?</h2>
+      <p>Let us help you reduce your energy bills and make a difference. Get in touch today!</p>
+      <a href="#contact-form" class="cta-button">Get a Free Quote</a>
+    </div>
+  
+    <form class="contact-form" id="contact-form">
+      <h3>Contact Us</h3>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+      <button type="submit" onclick="alert('your message has been recieved sucesfully')">Send Message</button>
+    </form>
+  </section>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Remo-Solar</h3>
+        <p>Powering a cleaner future, one rooftop at a time.</p>
+      </div>
+  
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: support@remosolar.com</p>
+        <p>Phone: +234 080 629 202 39</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; 2025 SolarEdge. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  
+    <script src="script.js"></script>
+</body>
+</html>
+
+
