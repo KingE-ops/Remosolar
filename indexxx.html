@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solar Product Carousel</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #222;
+    }
+
+    body::-webkit-scrollbar{
+    width: 0    
+}
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 25px;
+      background-image: linear-gradient(pink, rgba(0, 0, 0, 0.735));
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-links {
+        position: relative;
+      display: flex;
+      gap: 30px;
+      /* left: 350px; */
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #d0021b;
+    }
+
+    h2 {
+      margin: 40px 0 20px;
+      text-align: center;
+      color: #d0021b;
+    }
+
+    .carousel-section {
+      padding: 20px;
+    }
+
+    .carousel-container {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .product-card {
+      flex: 0 0 50%;
+      box-sizing: border-box;
+      padding: 10px;
+      perspective: 1000px;
+    }
+
+    .card {
+      background: #fff;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      padding: 16px;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: rotateY(3deg) scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f5f5f5;
+    }
+
+    .card h4 {
+      margin: 10px 0 5px;
+      font-size: 1.1em;
+    }
+
+    .card p {
+      margin: 0 0 10px;
+    }
+
+    .card button {
+      background: #d0021b;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background: #a00115;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .nav-button {
+      background: #fff;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px 14px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    @media(max-width: 600px) {
+      .product-card {
+        flex: 0 0 100%;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    .top-banner {
+      display: flex;
+      width: auto;
+      height: 450px;
+      background: url(./image/pexels-tamanna-rumee-52377920-7986994.jpg);
+      background-position: center;
+      background-size: cover;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+    }
+
+    .banner-text h1 {
+      font-size: 3em;
+      color: white;
+      font-weight: 700;
+      margin: 0;
+      max-width: 500px;
+    }
+
+    .banner-text strong {
+      color: #d0021b;
+    }
+
+    .banner-button {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: #d0021b;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .banner-button:hover {
+      background: #a00115;
+    }
+
+    @media (max-width: 768px) {
+      .top-banner {
+        flex-direction: column;
+        text-align: left;
+        padding: 20px 10px;
+      }
+
+      .banner-text h1 {
+        font-size: 1.5em;
+      }
+    }
+
+    .hamburger {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  transform: perspective(600px) rotateY(0deg);
+  transition: transform 0.5s ease;
+}
+
+.hamburger.open {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #222;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+/* Mobile styles */
+@media(max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    width: 250px;
+    background: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    padding: 15px 20px;
+    border-radius: 12px;
+    z-index: 999;
+  }
+
+  .nav-links a {
+    padding: 10px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .cart-icon{
+    display: none;
+  }
+
+  .cartCount{
+    display: none;
+  }
+
+  .cart-backdrop {
+  display: none;
+}
+
+.cart-sidebar{
+    display: none;
+}
+
+.cart-sidebar.show {
+    display: none;
+}
+
+.cart-item {
+    display: none;
+}
+
+.cart-item h4 {
+    display: none;
+}
+
+.cart-item button {
+    display: none;
+}
+
+.cart-total {
+    display: none;
+}
+
+.checkout-btn {
+    display: none;
+}
+
+.checkout-btn:hover {
+  display: none;
+}
+
+
+}
+
+.cart-icon {
+  cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  margin-left: 0px;
+}
+
+#cartCount {
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 1px;
+  left: 30px;
+}
+
+.cart-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: none;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  height: 100vh;
+  background: rgba(30, 30, 30, 0.95);
+  color: white;
+  box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
+  transition: right 0.4s ease;
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.cart-sidebar.show {
+  right: 0;
+}
+
+.cart-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 10px;
+}
+
+.cart-item h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.cart-item button {
+  background: none;
+  border: none;
+  color: #ff4c4c;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.cart-total {
+  margin-top: auto;
+  font-size: 18px;
+  padding: 10px 0;
+  text-align: right;
+}
+
+.checkout-btn {
+  background: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.checkout-btn:hover {
+  background: #cc3b3b;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div ><a href="./index.html" style="color: red; font-size: 20px; text-decoration: none; font-weight: 700;">Remo Solar</a></div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#inverters">Inverters</a>
+      <a href="#batteries">Batteries</a>
+      <a href="#panels">Panels</a>
+    </div>
+    
+    <p class="nav-item cart-icon" onclick="toggleCartDropdown()">
+      🛒<span id="cartCount">0</span>
+    </p>
+    
+    <div id="cartBackdrop" class="cart-backdrop" onclick="toggleCartDropdown()"></div>
+    <div id="cartSidebar" class="cart-sidebar">
+      <h3>Your Cart</h3>
+      <div id="cartItems"></div>
+      <div class="cart-total">
+        <strong>Total: ₦<span id="cartTotal">0</span></strong>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+  </nav>
+
+  <section class="top-banner">
+    <div class="banner-text">
+      <h1>
+        <span>Shop online To Get <strong>80%</strong>
+            Discount
+        </span></h1>
+      <button class="banner-button" onclick="window.location='#inverters'">Shop Now</button>
+    </div>
+  </section>
+
+  <h2 id="inverters">Inverters/Controllers</h2>
+  <div class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel" id="inverterCarousel">
+        <!-- Product Cards (Inverters) -->
+      </div>
+    </div>
+    <div class="nav-container">
+      <button class="nav-button" onclick="prevSlide('inverterCarousel')">❮</button>
+      <button class="nav-button" onclick="nextSlide('inverterCarousel')">❯</button>
+    </div>
+  </div>
+
+  <h2 id="batteries">Batteries</h2>
+  <div class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel" id="batteryCarousel">
+        <!-- Product Cards (Batteries) -->
+      </div>
+    </div>
+    <div class="nav-container">
+      <button class="nav-button" onclick="prevSlide('batteryCarousel')">❮</button>
+      <button class="nav-button" onclick="nextSlide('batteryCarousel')">❯</button>
+    </div>
+  </div>
+
+  <h2 id="panels">Panels</h2>
+  <div class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel" id="panelCarousel">
+        <!-- Product Cards (Panels) -->
+      </div>
+    </div>
+    <div class="nav-container">
+      <button class="nav-button" onclick="prevSlide('panelCarousel')">❮</button>
+      <button class="nav-button" onclick="nextSlide('panelCarousel')">❯</button>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let cartCount = 0;
+    let cartTotal = 0;
+    const cartCountElement = document.getElementById("cartCount");
+    const cartTotalElement = document.getElementById("cartTotal");
+    const cartItemsElement = document.getElementById("cartItems");
+
+    const products = {
+      inverters: [
+        { name: "12V Pure Sine Inverter", price: 50000, img: "./images/inverter1.jpg", id: "inverter1" },
+        { name: "24V Solar Inverter", price: 70000, img: "./images/inverter2.jpg", id: "inverter2" },
+        { name: "48V Off-Grid Inverter", price: 100000, img: "./images/inverter3.jpg", id: "inverter3" },
+        { name: "12V Pure Sine Inverter", price: 50000, img: "./images/inverter1.jpg", id: "inverter1" },
+        { name: "24V Solar Inverter", price: 70000, img: "./images/inverter2.jpg", id: "inverter2" },
+        { name: "48V Off-Grid Inverter", price: 100000, img: "./images/inverter3.jpg", id: "inverter3" }
+      ],
+      batteries: [
+        { name: "12V 100Ah Solar Battery", price: 40000, img: "./images/battery1.jpg", id: "battery1" },
+        { name: "24V 200Ah Solar Battery", price: 60000, img: "./images/battery2.jpg", id: "battery2" },
+        { name: "48V 400Ah Solar Battery", price: 80000, img: "./images/battery3.jpg", id: "battery3" },
+        { name: "12V 100Ah Solar Battery", price: 40000, img: "./images/battery1.jpg", id: "battery1" },
+        { name: "24V 200Ah Solar Battery", price: 60000, img: "./images/battery2.jpg", id: "battery2" },
+        { name: "48V 400Ah Solar Battery", price: 80000, img: "./images/battery3.jpg", id: "battery3" }
+      ],
+      panels: [
+        { name: "200W Solar Panel", price: 30000, img: "./images/panel1.jpg", id: "panel1" },
+        { name: "300W Solar Panel", price: 45000, img: "./images/panel2.jpg", id: "panel2" },
+        { name: "500W Solar Panel", price: 65000, img: "./images/panel3.jpg", id: "panel3" },
+        { name: "200W Solar Panel", price: 30000, img: "./images/panel1.jpg", id: "panel1" },
+        { name: "300W Solar Panel", price: 45000, img: "./images/panel2.jpg", id: "panel2" },
+        { name: "500W Solar Panel", price: 65000, img: "./images/panel3.jpg", id: "panel3" }
+      ]
+    };
+
+    function addToCart(product) {
+      const found = cart.find(item => item.id === product.id);
+      if (found) {
+        found.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+      cartTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      cartCountElement.textContent = cartCount;
+      cartTotalElement.textContent = cartTotal;
+
+      cartItemsElement.innerHTML = "";
+      cart.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+          <h4>${item.name} (x${item.quantity})</h4>
+          <button onclick="removeFromCart('${item.id}')">Remove</button>
+        `;
+        cartItemsElement.appendChild(div);
+      });
+    }
+
+    function removeFromCart(id) {
+      const index = cart.findIndex(item => item.id === id);
+      if (index !== -1) {
+        cart.splice(index, 1);
+      }
+      updateCart();
+    }
+
+    function checkout() {
+      alert(`Proceeding to checkout... Total: ₦${cartTotal}`);
+      cart = [];
+      updateCart();
+    }
+
+    function toggleMenu(menu) {
+      const navLinks = document.getElementById('navLinks');
+      menu.classList.toggle('open');
+      navLinks.classList.toggle('show');
+    }
+
+    function toggleCartDropdown() {
+      const cartSidebar = document.getElementById('cartSidebar');
+      const cartBackdrop = document.getElementById('cartBackdrop');
+      cartSidebar.classList.toggle('show');
+      cartBackdrop.style.display = cartSidebar.classList.contains('show') ? 'block' : 'none';
+    }
+
+    function prevSlide(carouselId) {
+      const carousel = document.getElementById(carouselId);
+      carousel.style.transform = `translateX( 0%)`;
+    }
+
+    function nextSlide(carouselId) {
+      const carousel = document.getElementById(carouselId);
+      carousel.style.transform = `translateX( -70%,)`;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const inverterCarousel = document.getElementById("inverterCarousel");
+      products.inverters.forEach(product => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+          <div class="card">
+            <img src="${product.img}" alt="${product.name}" />
+            <h4>${product.name}</h4>
+            <p>₦${product.price}</p>
+            <button onclick="addToCart({name: '${product.name}', price: ${product.price}, img: '${product.img}', id: '${product.id}'})">Add to Cart</button>
+          </div>
+        `;
+        inverterCarousel.appendChild(card);
+      });
+
+      const batteryCarousel = document.getElementById("batteryCarousel");
+      products.batteries.forEach(product => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+          <div class="card">
+            <img src="${product.img}" alt="${product.name}" />
+            <h4>${product.name}</h4>
+            <p>₦${product.price}</p>
+            <button onclick="addToCart({name: '${product.name}', price: ${product.price}, img: '${product.img}', id: '${product.id}'})">Add to Cart</button>
+          </div>
+        `;
+        batteryCarousel.appendChild(card);
+      });
+
+      const panelCarousel = document.getElementById("panelCarousel");
+      products.panels.forEach(product => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+          <div class="card">
+            <img src="${product.img}" alt="${product.name}" />
+            <h4>${product.name}</h4>
+            <p>₦${product.price}</p>
+            <button onclick="addToCart({name: '${product.name}', price: ${product.price}, img: '${product.img}', id: '${product.id}'})">Add to Cart</button>
+          </div>
+        `;
+        panelCarousel.appendChild(card);
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solar Products</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .cart-icon {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cart-icon span {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 3px 6px;
+      font-size: 12px;
+    }
+
+    .banner {
+      background: url('./image/banner.jpg') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .banner button {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background-color: #2c5364;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .section h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      overflow: hidden;
+      gap: 1rem;
+    }
+
+    .product-card {
+      flex: 0 0 auto;
+      width: 200px;
+      perspective: 1000px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: rotateY(5deg) scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .card p {
+      font-weight: bold;
+      color: #2c5364;
+      margin-bottom: 0.5rem;
+    }
+
+    .card button {
+      padding: 0.5rem;
+      width: 100%;
+      background-color: #2c5364;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      background-color: #203a43;
+    }
+
+    .pagination {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .pagination button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      background-color: #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #cartSidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 300px;
+      height: 100%;
+      background: white;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+      padding: 1rem;
+      transition: right 0.3s ease;
+      z-index: 999;
+    }
+
+    #cartSidebar.open {
+      right: 0;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .cart-item button {
+      background-color: red;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .cart-total {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .checkout {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      background-color: #2c5364;
+      color: white;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .carousel {
+        flex-direction: column;
+      }
+
+      .product-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Solar Products</h1>
+    <nav>
+      <a href="#inverters">Inverters</a>
+      <a href="#batteries">Batteries</a>
+      <a href="#cartSidebar">Cart</a>
+    </nav>
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cartCount">0</span>
+    </div>
+  </header>
+
+  <div class="banner">
+    <div class="banner-content">
+      <h2>Power Your Life with Solar</h2>
+      <button onclick="document.getElementById('inverters').scrollIntoView()">Shop Now</button>
+    </div>
+  </div>
+
+  <div class="section" id="inverters">
+    <h2>Inverters & Controllers</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="inverter-carousel"></div>
+      <div class="pagination" id="inverter-pagination"></div>
+    </div>
+  </div>
+
+  <div class="section" id="batteries">
+    <h2>Batteries</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="battery-carousel"></div>
+      <div class="pagination" id="battery-pagination"></div>
+    </div>
+  </div>
+
+  <div id="cartSidebar">
+    <h3>Your Cart</h3>
+    <div id="cartItems"></div>
+    <div class="cart-total">Total: ₦<span id="cartTotal">0</span></div>
+    <button class="checkout">Checkout</button>
+  </div>
+
+  <script>
+    const inverterProducts = [
+      { name: "Mercury 5kva Inverter", price: "520,000" },
+      { name: "Bluegate 3.5kva Inverter", price: "480,000" },
+      { name: "Prag 10kva Inverter", price: "900,000" },
+      { name: "Luminous 3.5kva Inverter", price: "460,000" },
+    ];
+
+    const batteryProducts = [
+      { name: "B3 220Ah Inverter Battery", price: "175,000" },
+      { name: "Mercury Elite 12V 200Ah", price: "178,000" },
+      { name: "SMK 200Ah/12V Battery", price: "174,000" },
+      { name: "Luminous Tubular 220Ah", price: "185,000" },
+    ];
+
+    let cart = [];
+
+    function paginateProducts(products, page, perPage = 2) {
+      const start = page * perPage;
+      return products.slice(start, start + perPage);
+    }
+
+    function renderProducts(products, carouselId, paginationId, type) {
+      let currentPage = 0;
+      const container = document.getElementById(carouselId);
+      const pagination = document.getElementById(paginationId);
+
+      function updateCarousel() {
+        container.innerHTML = "";
+        const paginated = paginateProducts(products, currentPage);
+        paginated.forEach(product => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.innerHTML = `
+            <div class="card">
+              <img src="./image/placeholder.png" alt="${product.name}" />
+              <h4>${product.name}</h4>
+              <p>₦${product.price}</p>
+              <button onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      function updatePagination() {
+        pagination.innerHTML = "";
+        const totalPages = Math.ceil(products.length / 2);
+        for (let i = 0; i < totalPages; i++) {
+          const btn = document.createElement("button");
+          btn.textContent = i + 1;
+          btn.onclick = () => {
+            currentPage = i;
+            updateCarousel();
+          };
+          pagination.appendChild(btn);
+        }
+      }
+
+      updateCarousel();
+      updatePagination();
+    }
+
+    function addToCart(product) {
+      cart.push(product);
+      updateCartUI();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartItems = document.getElementById("cartItems");
+      const cartCount = document.getElementById("cartCount");
+      const cartTotal = document.getElementById("cartTotal");
+
+      cartItems.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+          <h4>${item.name}</h4>
+          <p>₦${item.price}</p>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItems.appendChild(itemDiv);
+
+        const priceValue = parseInt(item.price.replace(/[^\d]/g, ""));
+        if (!isNaN(priceValue)) total += priceValue;
+      });
+
+      cartCount.innerText = cart.length;
+      cartTotal.innerText = total.toLocaleString();
+    }
+
+    function toggleCart() {
+      document.getElementById("cartSidebar").classList.toggle("open");
+    }
+
+    // Initial render
+    renderProducts(inverterProducts, "inverter-carousel", "inverter-pagination", "inverter");
+    renderProducts(batteryProducts, "battery-carousel", "battery-pagination", "battery");
+  </script>
+</body>
+</html>
