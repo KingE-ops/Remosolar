@@ -147,14 +147,14 @@ body::-webkit-scrollbar{
   .video-container {
     position: relative;
     width: 100%;
-    height: 130vh;
+    height: 100vh;
     overflow: hidden;
   }
 
   .content {
     position: relative;
     top: 100px;
-    right: 5px;
+    right: 3px;
     z-index: 3;
     text-align: center;
     color: white;
@@ -170,7 +170,8 @@ body::-webkit-scrollbar{
   }
 
   .content p{
-    font-size: 10px;
+    font-size: 7px;
+    color: greenyellow;
   }
   
 }
@@ -292,133 +293,8 @@ body::-webkit-scrollbar{
     width: 260px;
     height: 310px;
 }
-.now{
-    position: absolute;
-    left: 830px;
-    border: 2px solid white;
-    border-radius: 20px;
-    bottom: 280px;
-    cursor: pointer;
-    background-color: transparent;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 16px;
-    /* box-shadow: 2px 2px 2px 2px aliceblue; */
-    font-weight: 900;
-    padding: 17px;
-    transition: 0.7s;
-}
-.now:hover{
-    background-color: white;
-}
-.now-1{
-    position: absolute;
-    left: 970px;
-    border: none;
-    border-radius: 20px;
-    border: 2px solid white;
-    bottom: 280px;
-    cursor: pointer;
-    background-color: transparent;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 16px;
-    /* box-shadow: 2px 2px 2px 2px aliceblue; */
-    font-weight: 900;
-    padding: 17px;
-    transition: 0.7s;
-}
-.now-1:hover{
-    background-color: white;
-}
-.power{
-    position: relative;
-    left: 50px;
-    font-size: 70px;
-    color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.solar{
-    position: relative;
-    left: 50px;
-    color: rgb(2, 2, 117);
-}
-.co-operate{
-    position: relative;
-    color: rgb(19, 70, 0);
-    font-size: 15px;
-}
-.clean{
-    font-size: 13px;
-    color: rgb(2, 2, 117);
-    font-family: cursive;
-}
-.solution{
-    color: white;
-}
 
-/* Animation Keyframes */
-@keyframes power {
-    from {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes solar {
-    from {
-      opacity: 0;
-      transform: translateX(-40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes now {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes now-1 {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Animation Classes */
-  .power {
-    animation: power 1s ease forwards;
-  }
-  
-  .solar {
-    animation: solar 1s ease forwards;
-    animation-delay: 0.3s;
-  }
-  
-  .now {
-    animation: now 1s ease forwards;
-    animation-delay: 0.6s;
-  }
-  
-  .now-1 {
-    animation: now-1 1s ease forwards;
-    animation-delay: 0.6s;
-  }
-  
+
   #chat-widget {
     position: fixed;
     bottom: 20px;
