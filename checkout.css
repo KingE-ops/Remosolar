@@ -1,0 +1,140 @@
+:root {
+    --primary-color: rgba(255, 255, 255, 0);
+    --bg-blur: rgba(255, 255, 255, 0.2);
+    --text-color: #333;
+    --dark-bg: #1a1a2e;
+    --dark-text: #f1f1f1;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #a5b4fc);
+    color: var(--text-color);
+    padding: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  body.dark-mode {
+    background: var(--dark-bg);
+    color: var(--dark-text);
+  }
+
+  .checkout-container {
+    background: var(--bg-blur);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    max-width: 550px;
+    margin: 40px auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    perspective: 1000px;
+  }
+
+  .progress-bar {
+    height: 6px;
+    width: 0;
+    background: var(--primary-color);
+    transition: width 0.5s ease;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 95%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 16px;
+  }
+
+  .form-group label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    /* background: rgba(255, 255, 255, 0.8); */
+    padding: 0 4px;
+    font-size: 14px;
+    color: #666;
+    transition: 0.3s;
+  }
+
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label,
+  .form-group textarea:focus + label,
+  .form-group textarea:not(:placeholder-shown) + label,
+  .form-group select:focus + label,
+  .form-group select:not(:placeholder-shown) + label {
+    top: -8px;
+    font-size: 12px;
+    color: var(--primary-color);
+  }
+
+  button {
+    background-color: var(--primary-color);
+    color: green;
+    /* background-color: white; */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .avatar-preview {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .popup {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: transform 0.3s ease;
+  }
+
+  .popup.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: gold;
+    top: 0;
+    left: 50%;
+    animation: fall 1s linear forwards;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
