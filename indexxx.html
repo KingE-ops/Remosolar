@@ -240,7 +240,7 @@
     position: absolute;
     top: 70px;
     right: 30px;
-    width: 250px;
+    width: 220px;
     background: white;
     box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     padding: 15px 20px;
@@ -262,53 +262,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .cart-icon{
-    display: none;
-  }
-
-  .cartCount{
-    display: none;
-  }
-
-  .cart-backdrop {
-  display: none;
-}
-
-.cart-sidebar{
-    display: none;
-}
-
-.cart-sidebar.show {
-    display: none;
-}
-
-.cart-item {
-    display: none;
-}
-
-.cart-item h4 {
-    display: none;
-}
-
-.cart-item button {
-    display: none;
-}
-
-.cart-total {
-    display: none;
-}
-
-.checkout-btn {
-    display: none;
-}
-
-.checkout-btn:hover {
-  display: none;
-}
-
 
 }
-
 .cart-icon {
   cursor: pointer;
   font-size: 20px;
@@ -319,11 +274,11 @@
 #cartCount {
   background: red;
   color: white;
-  font-size: 12px;
+  font-size: 11px;
   padding: 2px 6px;
   border-radius: 50%;
   position: absolute;
-  bottom: 1px;
+  bottom: 2px;
   left: 30px;
 }
 
@@ -341,7 +296,7 @@
   position: fixed;
   top: 0;
   right: -100%;
-  width: 320px;
+  width: 170px;
   height: 100vh;
   background: rgba(30, 30, 30, 0.95);
   color: white;
@@ -381,6 +336,8 @@
 }
 
 .cart-total {
+  position: relative;
+  bottom: 40px;
   margin-top: auto;
   font-size: 18px;
   padding: 10px 0;
@@ -388,10 +345,13 @@
 }
 
 .checkout-btn {
+  position: relative;
+  bottom: 30px;
   background: #ff4c4c;
   color: white;
   border: none;
   padding: 12px;
+  text-decoration: none;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
@@ -401,6 +361,10 @@
 
 .checkout-btn:hover {
   background: #cc3b3b;
+}
+.checkout-btn a{
+  text-decoration: none;
+  color: white;
 }
 
 
@@ -432,7 +396,7 @@
       <div class="cart-total">
         <strong>Total: ₦<span id="cartTotal">0</span></strong>
       </div>
-      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+      <button class="checkout-btn" onclick="checkout()"><a href="./checkout.html">Checkout</a></button>
     </div>
   </nav>
 
@@ -575,15 +539,37 @@
       cartBackdrop.style.display = cartSidebar.classList.contains('show') ? 'block' : 'none';
     }
 
-    function prevSlide(carouselId) {
-      const carousel = document.getElementById(carouselId);
-      carousel.style.transform = `translateX( 0%)`;
-    }
 
-    function nextSlide(carouselId) {
-      const carousel = document.getElementById(carouselId);
-      carousel.style.transform = `translateX( -70%,)`;
-    }
+    let slidePositions = {
+  inverterCarousel: 0,
+  batteryCarousel: 0,
+  panelCarousel: 0
+};
+
+function nextSlide(carouselId) {
+  const carousel = document.getElementById(carouselId);
+  const maxShift = -70; // You can tweak this if your card width or container changes
+  slidePositions[carouselId] -= 100;
+
+  // Limit shift (assumes 3 items visible at a time, adjust if needed)
+  const maxSlide = -(carousel.children.length - 3) * 100;
+  if (slidePositions[carouselId] < maxSlide) {
+    slidePositions[carouselId] = maxSlide;
+  }
+
+  carousel.style.transform = `translateX(${slidePositions[carouselId]}%)`;
+}
+
+function prevSlide(carouselId) {
+  slidePositions[carouselId] += 100;
+  if (slidePositions[carouselId] > 0) {
+    slidePositions[carouselId] = 0;
+  }
+
+  const carousel = document.getElementById(carouselId);
+  carousel.style.transform = `translateX(${slidePositions[carouselId]}%)`;
+}
+
 
     document.addEventListener("DOMContentLoaded", function () {
       const inverterCarousel = document.getElementById("inverterCarousel");
