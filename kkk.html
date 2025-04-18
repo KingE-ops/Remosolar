@@ -16,6 +16,7 @@
     font-family: 'Segoe UI', sans-serif;
     background: #fff;
     color: #222;
+    overflow-x: hidden;
   }
 
   body::-webkit-scrollbar{
@@ -24,10 +25,13 @@
 
   nav {
     display: flex;
+    width: auto;
+    height: 7vh;
     justify-content: space-between;
     align-items: center;
     padding: 10px 25px;
-    background-image: linear-gradient(pink, rgba(0, 0, 0, 0.735));
+    background-image: linear-gradient(white, rgba(255, 255, 255, 0.765));
+    /* backdrop-filter: blur(20px); */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
@@ -44,7 +48,7 @@
   .nav-links a {
     text-decoration: none;
     color: #222;
-    font-weight: 500;
+    font-weight: 700;
     transition: color 0.3s ease;
   }
 
@@ -85,7 +89,7 @@
     border-radius: 16px;
     padding: 16px;
     transform-style: preserve-3d;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
   }
 
   .card:hover {
@@ -131,12 +135,13 @@
   }
 
   .nav-button {
-    background: #fff;
+    background-color: white;
+    /* backdrop-filter: blur(20px); */
     border: none;
     font-size: 24px;
     cursor: pointer;
     padding: 5px 14px;
-    border-radius: 50%;
+    border-radius: 30%;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
 
@@ -146,7 +151,7 @@
     }
     .nav-links {
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
     }
   }
 
@@ -168,7 +173,7 @@
   .banner-text h1 {
     font-size: 3em;
     color: white;
-    font-weight: 700;
+    font-weight: 800;
     margin: 0;
     max-width: 500px;
   }
@@ -243,7 +248,8 @@ transition: 0.4s;
   top: 70px;
   right: 30px;
   width: 220px;
-  background: white;
+  background-color: rgba(255, 255, 255, 0.648);
+  backdrop-filter: blur(10px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.1);
   padding: 15px 20px;
   border-radius: 12px;
@@ -274,6 +280,7 @@ cursor: pointer;
 font-size: 20px;
 position: relative;
 margin-left: 0px;
+bottom: 2px;
 }
 
 #cartCount {
@@ -303,7 +310,8 @@ top: 0;
 right: -100%;
 width: 190px;
 height: 100vh;
-background: rgba(30, 30, 30, 0.95);
+background-color: rgba(30, 30, 30, 0.749);
+backdrop-filter: blur(15px);
 color: white;
 box-shadow: -6px 0 20px rgba(0, 0, 0, 0.5);
 transition: right 0.4s ease;
